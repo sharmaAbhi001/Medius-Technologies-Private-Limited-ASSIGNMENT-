@@ -1,7 +1,32 @@
-
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
 
 const McSection1 = () => {
+
+ 
+  const [homePrice,setHomePrice] = useState(300000);
+  const [sliderValue, setSliderValue] = useState(300000);
+  const [dawonpayment,setDawonpayment] = useState(homePrice*0.2);
+ 
+  
+  useEffect(()=>{
+    setDawonpayment(homePrice*0.2)
+  
+   
+
+  },[homePrice])
+
+  const remainingAmount = homePrice * 0.8; 
+  const interestRate = 0.005;
+  const loanTenure = 360; 
+  
+  const emi =
+    (remainingAmount * interestRate * Math.pow(1 + interestRate, loanTenure)) /
+    (Math.pow(1 + interestRate, loanTenure) - 1);
+  
+
+
+
   return (
     <section className="bg-successBackground py-16">
     <div className="m-auto max-w-screen-2xl justify-between px-6 md:px-14">
@@ -37,14 +62,15 @@ const McSection1 = () => {
                     <input
                       data-qa="home-price"
                       name="home-price"
-                      type="tel"
+                      type="number"
                       data-labelalign="top"
                       id="input-home-price"
                       autoCapitalize="off"
                       autoCorrect="off"
                       aria-invalid="false"
                       className="text-left relative outline-none border-none rounded-sm px-sm pb-none text-default font-bold w-full h-full box-border pl-[32px] text-xl lg:text-3xl"
-                      value="300,000"
+                      value={homePrice}
+                      onChange={(e) => setHomePrice(e.target.value)}
                     />
                   </div>
                 </div>
@@ -59,8 +85,9 @@ const McSection1 = () => {
                   className="leading-body m-0 p-0 text-left my-lg flex h-[30px] items-baseline overflow-hidden text-xl font-bold text-textPrimary md:my-none md:h-2xl lg:h-4xl lg:text-3xl"
                   data-qa="monthly-payment"
                 >
-                  $2,146/mo
+                  ${emi.toFixed(2)}
                 </p>
+                
               </div>
             </div>
             <div className="hidden md:block">
@@ -73,20 +100,24 @@ const McSection1 = () => {
             </div>
           </div>
           <div className="relative mx-lg mt-8 mb-lg">
-            <input
-              type="range"
-              min="50000"
-              max="3000000"
-              step="100"
-              className="bg-textPrimary [&amp;::-webkit-slider-thumb]:bg-textPrimary rounded-base w-full cursor-pointer appearance-none focus:outline-none disabled:pointer-events-none disabled:opacity-50 [&amp;::-moz-range-thumb]:h-2.5 [&amp;::-moz-range-thumb]:w-2.5 [&amp;::-moz-range-thumb]:appearance-none [&amp;::-moz-range-thumb]:rounded-full [&amp;::-moz-range-thumb]:border-4 [&amp;::-moz-range-thumb]:transition-all [&amp;::-moz-range-thumb]:duration-150 [&amp;::-moz-range-thumb]:ease-in-out [&amp;::-moz-range-track]:h-2 [&amp;::-moz-range-track]:w-full [&amp;::-moz-range-track]:rounded-full [&amp;::-moz-range-track]:bg-gray-100 [&amp;::-webkit-slider-runnable-track]:h-1 [&amp;::-webkit-slider-runnable-track]:w-full [&amp;::-webkit-slider-runnable-track]:rounded-full [&amp;::-webkit-slider-runnable-track]:bg-gray-100 [&amp;::-webkit-slider-runnable-track]:dark:bg-neutral-700 [&amp;::-webkit-slider-thumb]:-mt-1.5 [&amp;::-webkit-slider-thumb]:h-4 [&amp;::-webkit-slider-thumb]:w-4 [&amp;::-webkit-slider-thumb]:appearance-none [&amp;::-webkit-slider-thumb]:rounded-full [&amp;::-webkit-slider-thumb]:transition-all [&amp;::-webkit-slider-thumb]:duration-150 [&amp;::-webkit-slider-thumb]:ease-in-out [&amp;::-webkit-slider-thumb]:dark:bg-neutral-700"
-              id="min-and-max-range-slider-usage"
-              style={{
-                backgroundImage:
-                  "linear-gradient(to right, rgb(41, 43, 41) 8.47%, #c8c9c6 8.47% 100%)",
-              }}
-              value="300000"
-            />
-          </div>
+      <input
+        type="range"
+        min="50000"
+        max="3000000"
+        step="100"
+        className="bg-textPrimary rounded-base w-full cursor-pointer appearance-none focus:outline-none"
+        id="min-and-max-range-slider-usage"
+        style={{
+          backgroundImage: `linear-gradient(to right, rgb(41, 43, 41) ${
+            ((sliderValue - 50000) / (3000000 - 50000)) * 100
+          }%, #c8c9c6 ${((sliderValue - 50000) / (3000000 - 50000)) * 100}% 100%)`,
+        }}
+        value={sliderValue}
+        onChange={(e) => setSliderValue(e.target.value)}
+        onChangeCapture={(e) =>setHomePrice(e.target.value)}
+      />
+      <p className="mt-2 text-center text-xl font-bold">{sliderValue}</p>
+    </div>
           <div className="mt-xl hidden md:block">
             <div className="gap-x-5xl gap-y-px lg:flex">
               <div className="flex flex-col md:flex-row flex-1 mb-base gap-base">
@@ -140,7 +171,8 @@ const McSection1 = () => {
                           autoCorrect="off"
                           aria-invalid="false"
                           className="text-left px-sm pb-none pl-[32px] pt-[10px] relative outline-none border-none rounded-sm px-sm pb-none text-default font-bold w-full h-full box-border"
-                          value="60,000"
+                          value={dawonpayment}
+                          onChange={(e)=> setDawonpayment(e.target.value)}
                         />
                       </div>
                     </div>

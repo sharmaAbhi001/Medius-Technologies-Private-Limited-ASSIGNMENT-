@@ -19,24 +19,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <nav>
-          <ul className="w-full flex justify-evenly p-7">
-            <li>
-              <Link href="/">Home</Link>
-            </li>
-            <li>
-              <Link href="/about-us">About Us</Link>
-            </li>
-            <li>
-            <Link href="/mortgage-calculator?taxes=265&zip=400017">
-            Mortgage Calculator </Link>
-            </li>
-            <li>
-              <Link href="/start">Start</Link>
-            </li>
-          </ul>
-        </nav>
-
         <Navbar />
         {children}
         <Footer />

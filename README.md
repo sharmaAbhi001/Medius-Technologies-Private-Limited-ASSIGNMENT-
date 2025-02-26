@@ -2,22 +2,6 @@
 
 A multi-page web application built using **React & Next.js**, replicating four pages of the **Better.com** website.
 
-## 📌 Live Demo
-🔗 [Deployed Link]()
-
-## 📂 Repository
-🔗 [GitHub Repository](https://github.com/Mayankkamriya/Better.com-Clone.git)
-
----
-
-## 🎯 Features
-✅ **Next.js for Server-side Rendering & Routing**
-✅ **Responsive & Pixel-perfect UI**
-✅ **Dynamic Mortgage Calculator**
-✅ **Styled with CSS/SCSS/Styled-Components**
-✅ **Deployed on Vercel/Netlify/Heroku**
-
----
 
 ## 📜 Pages Implemented
 
@@ -69,8 +53,8 @@ To deploy your own version:
 ---
 
 ## 💡 Author
-👨‍💻 **Mayank Kamriya** 
-🔗 [Github Profile](https://github.com/Mayankkamriya) 
+👨‍💻 **Abhishek Sharma** 
+🔗 [Github Profile](https://github.com/sharmaAbhi001) 
 
 ---
 
