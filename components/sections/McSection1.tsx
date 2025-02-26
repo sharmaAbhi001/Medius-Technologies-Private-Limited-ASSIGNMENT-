@@ -4,9 +4,9 @@ import React, { useEffect, useState } from 'react'
 const McSection1 = () => {
 
  
-  const [homePrice,setHomePrice] = useState(300000);
-  const [sliderValue, setSliderValue] = useState(300000);
-  const [dawonpayment,setDawonpayment] = useState(homePrice*0.2);
+  const [homePrice,setHomePrice] = useState<number>(300000);
+  const [sliderValue, setSliderValue] = useState<number>(300000);
+  const [dawonpayment,setDawonpayment] = useState<number>(0);
  
   
   useEffect(()=>{
@@ -70,7 +70,7 @@ const McSection1 = () => {
                       aria-invalid="false"
                       className="text-left relative outline-none border-none rounded-sm px-sm pb-none text-default font-bold w-full h-full box-border pl-[32px] text-xl lg:text-3xl"
                       value={homePrice}
-                      onChange={(e) => setHomePrice(e.target.value)}
+                      onChange={(e) => setHomePrice(Number(e.target.value))}
                     />
                   </div>
                 </div>
@@ -113,8 +113,10 @@ const McSection1 = () => {
           }%, #c8c9c6 ${((sliderValue - 50000) / (3000000 - 50000)) * 100}% 100%)`,
         }}
         value={sliderValue}
-        onChange={(e) => setSliderValue(e.target.value)}
-        onChangeCapture={(e) =>setHomePrice(e.target.value)}
+        onChange={(e) => {
+          setSliderValue(Number(e.target.value));
+          setHomePrice(Number(e.target.value));
+        }}
       />
       <p className="mt-2 text-center text-xl font-bold">{sliderValue}</p>
     </div>
@@ -172,7 +174,7 @@ const McSection1 = () => {
                           aria-invalid="false"
                           className="text-left px-sm pb-none pl-[32px] pt-[10px] relative outline-none border-none rounded-sm px-sm pb-none text-default font-bold w-full h-full box-border"
                           value={dawonpayment}
-                          onChange={(e)=> setDawonpayment(e.target.value)}
+                          onChange={(e)=> setDawonpayment(Number(e.target.value))}
                         />
                       </div>
                     </div>

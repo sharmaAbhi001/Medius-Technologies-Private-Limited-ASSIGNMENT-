@@ -9,13 +9,6 @@ import { Menu, X } from "lucide-react";
 const Navbar = () => {
 
 const [isOpen,setIsOpen] = useState(false);
-const [isBuyOpen,setIsBuyOpen] = useState(false);
-
-const toggleBuy = ()=>{
-  
-  setIsBuyOpen(!isBuyOpen);
-};
-
   return (
     <header className="sticky top-0 z-20 transition-all ease-in-out duration-300 bg-accentPrimary">
       <nav className="m-auto flex max-w-screen-2xl justify-between p-5 md:py-5 md:px-10 xl:p-5">
